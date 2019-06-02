@@ -1,6 +1,7 @@
 package com.lvtuben.bendraw.domain;
 
 public class User {
+    private Integer id;
     private Integer sid;
     private String useruame;
     private String password;

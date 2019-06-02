@@ -6,14 +6,16 @@ import com.lvtuben.bendraw.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
     @Override
-    public User getUser(Integer sid) {
-        return userMapper.getUser(sid);
+    public List<User> getUser(User user) {
+        return userMapper.select(user);
     }
 
     @Override

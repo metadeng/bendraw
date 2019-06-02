@@ -1,11 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lvtuben.bendraw.mapper.UserMapper">
-    <select id="getUser" resultType="com.lvtuben.bendraw.domain.User">
-        select * from user where sid = #{sid}
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.lvtuben.bendraw.domain.User">
+        <result column="sid" property="sid"/>
+        <result column="useruame" property="useruame"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        sid,
+        useruame,
+        password,
+        phone,
+        address
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.sid != null"> sid, </if>
+            <if test="pojo.useruame != null"> useruame, </if>
+            <if test="pojo.password != null"> password, </if>
+            <if test="pojo.phone != null"> phone, </if>
+            <if test="pojo.address != null"> address, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.sid != null"> #{pojo.sid}, </if>
+            <if test="pojo.useruame != null"> #{pojo.useruame}, </if>
+            <if test="pojo.password != null"> #{pojo.password}, </if>
+            <if test="pojo.phone != null"> #{pojo.phone}, </if>
+            <if test="pojo.address != null"> #{pojo.address}, </if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO user(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.sid},
+            #{pojo.useruame},
+            #{pojo.password},
+            #{pojo.phone},
+            #{pojo.address}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="pojo.sid != null"> sid = #{pojo.sid}, </if>
+            <if test="pojo.useruame != null"> useruame = #{pojo.useruame}, </if>
+            <if test="pojo.password != null"> password = #{pojo.password}, </if>
+            <if test="pojo.phone != null"> phone = #{pojo.phone}, </if>
+            <if test="pojo.address != null"> address = #{pojo.address} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM user
+        <where>
+            <if test="pojo.sid != null"> AND sid = #{pojo.sid} </if>
+            <if test="pojo.useruame != null"> AND useruame = #{pojo.useruame} </if>
+            <if test="pojo.password != null"> AND password = #{pojo.password} </if>
+            <if test="pojo.phone != null"> AND phone = #{pojo.phone} </if>
+            <if test="pojo.address != null"> AND address = #{pojo.address} </if>
+        </where>
     </select>
 
+    <!--auto generated Code-->
     <delete id="deleteUser">
-        delete from USER where sid=#{sid}
+        DELETE FROM user where sid = #{sid}
     </delete>
 </mapper>

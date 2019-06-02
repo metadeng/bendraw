@@ -3,8 +3,10 @@ package com.lvtuben.bendraw.services;
 
 import com.lvtuben.bendraw.domain.User;
 
+import java.util.List;
+
 public interface UserService {
-    public User getUser(Integer sid);
+    List<User>  getUser(User user);
 
     Integer deleteUser(Integer sid);
 
